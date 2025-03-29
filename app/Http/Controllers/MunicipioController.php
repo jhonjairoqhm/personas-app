@@ -103,6 +103,7 @@
       */
      public function destroy(string $id)
      public function destroy($id)
+     
      {
          //
          $municipio = Municipio::find($id);
