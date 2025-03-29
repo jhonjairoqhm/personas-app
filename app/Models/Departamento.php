@@ -10,5 +10,6 @@
      use HasFactory;
      protected $table = 'tb_departamento';
      protected $primaryKey = 'pais_codi';
+     protected $primaryKey = 'depa_codi';
      public $timestamps = false;
  }
