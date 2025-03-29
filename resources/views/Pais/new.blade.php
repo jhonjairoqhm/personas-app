@@ -1,4 +1,4 @@
- <!doctype html>
+<!doctype html>
  <html lang="es">
  
  <head>
@@ -16,12 +16,28 @@
  <body>
      <div class="container">
          <h1>Agregar País</h1>
+ 
+         <!-- Mostrar errores de validación -->
+         @if ($errors->any())
+             <div class="alert alert-danger">
+                 <ul>
+                     @foreach ($errors->all() as $error)
+                         <li>{{ $error }}</li>
+                     @endforeach
+                 </ul>
+             </div>
+         @endif
+ 
          <form method="POST" action="{{ route('pais.store') }}">
              @csrf
              <div class="mb-3">
                  <label for="pais_codi" class="form-label">Código</label>
                  <input type="text" class="form-control" id="pais_codi" name="pais_codi" disabled="disabled">
                  <div class="form-text">Código del país</div>
+                 <label for="pais_codi" class="form-label">Código del País</label>
+                 <input type="text" required class="form-control" id="pais_codi" name="pais_codi" maxlength="3" minlength="3"
+                     placeholder="Ejemplo: ARG" oninput="this.value = this.value.toUpperCase()">
+                 <div class="form-text">Debe contener exactamente 3 letras en mayúsculas.</div>
              </div>
              <div class="mb-3">
                  <label for="pais_nomb" class="form-label">Nombre del País</label>
@@ -38,6 +54,7 @@
          </form>
      </div>
      
+ 
      <!-- Bootstrap Bundle with Popper -->
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
          integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
